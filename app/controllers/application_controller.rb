@@ -17,9 +17,6 @@ class ApplicationController < ActionController::API
       end
     end
 
-    def teste
-    end
-
     def authorize_request_funcionario
       header = request.headers['Authorization']
       header = header.split(' ').last if header
@@ -33,9 +30,3 @@ class ApplicationController < ActionController::API
       end
     end
   
-  
-  def teste2
-  end
-
-  #eyJhbGciOiJIUzI1NiJ9.eyJjdWlkYWRvcl9pZCI6MSwiZXhwIjoxNjA3MTA1NjU2fQ.8g3-8rnoJDyBfTaKZbNWflOrbpd5sgBd9q84YdqZWdk
-  #eyJhbGciOiJIUzI1NiJ9.eyJmdW5jaW9uYXJpb19pZCI6MSwiZXhwIjoxNjA3MTA1ODU1fQ.276DR9tXFiELGvmRYpHZSsb4SKbz5zmuO63EEwM1oYk
