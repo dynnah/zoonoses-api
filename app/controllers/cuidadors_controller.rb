@@ -7,12 +7,12 @@ class CuidadorsController < ApplicationController
   def index
     @cuidadors = Cuidador.all
 
-    render json: @cuidadors, status: :ok
+    render json: @cuidadors.to_json(:only => [:id, :cpf, :nome, :sexo, :telefone, :datanasc, :email],:include => :animal), status: :ok
   end
 
   # GET /cuidadors/1
   def show
-    render json: @cuidador, status: :ok
+    render json: @cuidador.to_json(:only => [:id, :cpf, :nome, :sexo, :telefone, :datanasc, :email], :include => :animal), status: :ok
   end
 
   # POST /cuidadors

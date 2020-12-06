@@ -1,21 +1,23 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :update, :destroy]
+  before_action :set_cuidador
 
   # GET /animals
   def index
-    @animals = Animal.all
+    @animal = @cuidador.animal
 
-    render json: @animals
+    render json: @animal.to_json(:only => [:id, :nome, :sexo, :raca, :idade, :peso, :cuidador_id])
   end
 
   # GET /animals/1
   def show
+    @animal = @cuidador.animal
     render json: @animal
   end
 
   # POST /animals
   def create
-    @animal = Animal.new(animal_params)
+    @animal = @cuidador.animal.build
 
     if @animal.save
       render json: @animal, status: :created, location: @animal
@@ -41,7 +43,12 @@ class AnimalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_animal
-      @animal = Animal.find(params[:id])
+      # @animal = @cuidador.animal.find(params[:id])
+      @animal = Animal.where(id: params[:d], cuidador: current_cuidador).take
+    end
+
+    def set_cuidador
+      @cuidador = Cuidador.find(params[:cuidador_id])
     end
 
     # Only allow a trusted parameter "white list" through.
