@@ -2,14 +2,17 @@ development:
   adapter: postgresql
   encoding: unicode
   database: zoonoses
+  host: localhost
   pool: 5
   username: postgres
-  password: umasenha
+  password: 16dynnah94
+  
 
 test:
   adapter: postgresql
   encoding: unicode
   database: zoonoses
   pool: 5
+  host: localhost
   username: postgres
-  password: umasenha
+  password: 16dynnah94
